@@ -9,6 +9,8 @@ import static dev.langchain4j.store.embedding.CosineSimilarity.between;
 import static dev.langchain4j.store.embedding.RelevanceScore.fromCosineSimilarity;
 import static java.time.Duration.ofSeconds;
 
+import dev.langchain4j.model.chat.ChatLanguageModel;
+import dev.langchain4j.model.vertexai.VertexAiGeminiChatModel;
 import java.util.List;
 import java.util.Properties;
 
@@ -154,6 +156,31 @@ public class ModelResource {
         p.put("relevance-score", fromCosineSimilarity(similarity));
 
         return p;
+
+    }
+
+
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("chat-gemini")
+    @Operation(
+        summary = "Use the chat model with Gemini.",
+        description = "Assume you are talking with an agent that is knowledgeable about " +
+            "Large Language Models. Ask any question about it.",
+        operationId = "chatModelAskGemini" )
+    public List<String> chatGeminiModelAsk(@QueryParam("userMessage") String userMessage) {
+
+        ChatLanguageModel model = VertexAiGeminiChatModel.builder()
+            .project(System.getenv("PROJECT_ID"))
+            .location(System.getenv("LOCATION"))
+            .modelName("gemini-pro")
+            .build();
+
+        String aiMessage = model.generate(userMessage);
+
+        return List.of(
+            "Me:     " + userMessage,
+            "Agent:  " + aiMessage.trim());
 
     }
 }

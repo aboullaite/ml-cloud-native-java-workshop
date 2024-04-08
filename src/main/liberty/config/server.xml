@@ -22,4 +22,6 @@
 
     <logging consoleLogLevel="INFO"/>
 
+    <ssl id="defaultSSLConfig"  trustDefaultCerts="true"/>
+
 </server>
