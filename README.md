@@ -1,107 +1,76 @@
-# LangChain4j in Jakarta EE and MicroProfile
-This example demonstrates LangChain4J in a Jakarta EE / MicroProfile application on Open Liberty. The application is a chatbot built with LangChain4J and uses Jakarta CDI, Jakarta RESTful Web Services, Jakarta WebSocket, MicroProfile Config, MicroProfile Metrics, and MicroProfile OpenAPI features.
+# LLM Powered App with Jakarta EE, MicroProfile, and LangChain4j
 
-## Prerequisites:
+This project leverages the power of Large Language Models (LLMs) in a Jakarta EE and MicroProfile-based application, utilizing LangChain4j for seamless integration. Originally inspired and adapted from [LangChain4j examples](https://github.com/langchain4j/langchain4j-examples), this repository has been extended to serve as a workshop for deploying and running the application in a Google Cloud Environment.
 
-- [Java 17](https://developer.ibm.com/languages/java/semeru-runtimes/downloads)
-- Hugging Face API Key
-  - Sign up and log in to https://huggingface.co.
-  - Go to [Access Tokens](https://huggingface.co/settings/tokens). 
-  - Create a new access token with `read` role.
-  
+## Overview
 
-## Environment Set Up
+The application demonstrates how to build, secure, and deploy an LLM-powered application using Jakarta EE, MicroProfile, and LangChain4j. It is designed as a workshop with 8 comprehensive steps, guiding through everything from setting up the local environment to deploying the application in Google Kubernetes Engine (GKE) and Google Cloud Run.
 
-To run this example application, navigate  to the `jakartaee-microprofile-example` directory:
+### What You Will Learn
 
-```
-cd langchain4j-examples/jakartaee-microprofile-example
-```
+- Setting up your local development environment for Jakarta EE and MicroProfile.
+- Integrating LangChain4j for leveraging Large Language Models in your application.
+- Containerizing your application with Docker.
+- Implementing security best practices for your application.
+- Deploying your application to Google Kubernetes Engine (GKE).
+- Deploying your application to Google Cloud Run.
+- Managing and scaling your application in a cloud environment.
 
-Set the following environment variables:
+## Prerequisites
 
-```
-export JAVA_HOME=<your Java 17 home path>
-export HUGGING_FACE_API_KEY=<your Hugging Face read token>
-```
+Before you begin, ensure you have the following installed:
 
-## Start the application
+- JDK 17 or later
+- Maven
+- Docker
+- Google Cloud SDK
 
-Use the Maven wrapper to start the application by using the [Liberty dev mode](https://openliberty.io/docs/latest/development-mode.html):
+## Setup
 
-```
-./mvnw liberty:dev
-```
+1. **Clone the Repository**
 
-## Try out the application
+   Clone this repository to your local machine using the following command:
 
-- Navigate to http://localhost:9080
-- At the prompt, try the following message examples:
-  - ```
-    What are large language models?
-    ```
-  - ```
-    Which are the most used models?
-    ```
-  - ```
-    any documentation?
-    ```
+   ```shell
+   git clone git@github.com:aboullaite/devnexus-workshop.git
+   ```
+2. **Local Environment Setup**
 
+Refer to `STEP1.md` in the `workshop` directory for instructions on setting up your local development environment.
 
-### Try out other models
+## Deployment
 
-Navigate to the the [OpenAPI UI](http://localhost:9080/openapi/ui) URL for the following 3 REST APIs:
+The deployment process is broken down into several steps, each detailed in the corresponding markdown file within the `workshop` directory.
 
-- [HuggingFaceLanguageModel](https://github.com/langchain4j/langchain4j/blob/main/langchain4j-hugging-face/src/main/java/dev/langchain4j/model/huggingface/HuggingFaceLanguageModel.java)
-  - Expand the GET `/api/model/language` API.
-    1. Click the **Try it out** button.
-    2. Type `When was langchain4j launched?`, or any question, in the question field.
-    3. Click the **Execute** button.
-  - Alternatively, run the following `curl` command from a command-line session:
-    - ```
-      curl 'http://localhost:9080/api/model/language?question=When%20was%20langchain4j%20launched%3F'
-      ```
-- [HuggingFaceChatModel](https://github.com/langchain4j/langchain4j/blob/main/langchain4j-hugging-face/src/main/java/dev/langchain4j/model/huggingface/HuggingFaceChatModel.java)
-  - expand the GET `/api/model/language` API
-    1. Click the **Try it out** button.
-    2. Type `Which are the most used Large Language Models?`, or any question, in the question field.
-    3. Click the **Execute** button.
-  - Alternatively, run the following `curl` command from a command-line session:
-    - ```
-      curl 'http://localhost:9080/api/model/chat?userMessage=Which%20are%20the%20most%20used%20Large%20Language%20models%3F' | jq
-      ```
-- [InProcessEmbeddingModel](https://github.com/langchain4j/langchain4j-embeddings)
-  - expand the GET `/api/model/similarity` API
-    1. Click the **Try it out** button.
-    2. Type `I like Jakarta EE and MicroProfile.`, or any text, in the the **text1** field.
-    3. Type `I like Python language.`, or any text, in the the **text2** field. 
-    3. Click the **Execute** button.
-  - Alternatively, run the following `curl` command from a command-line session:
-    - ```
-      curl 'http://localhost:9080/api/model/similarity?text1=I%20like%20Jakarta%20EE%20and%20MicroProfile.&text2=I%20like%20Python%20language.' | jq
-      ```
+### Steps Overview
+
+- **Step 1:** Setting up google cloud environment
+- **Step 2:** Deploying teh app locally
+- **Step 3:** Application Containerization
+- **Step 4:** Deploy the application to Kubernetes
+- **Step 5:** Securing the app
+- **Step 6:** Production Ready application on Kubernetes
+- **Step 7:** Deploying the app to cloud run
+- **Step 8:** Using Gemini
+
+Please follow the steps in sequential order to ensure a smooth deployment process.
+
+## Contributing
+
+We welcome contributions! Please feel free to open an issue or submit a pull request.
+
+## License
+
+This project is licensed under the [MIT License](LICENSE). See the LICENSE file for more details.
+
+## Acknowledgments
+
+- Thanks to the [LangChain4j](https://github.com/langchain4j/langchain4j-examples) project for the initial codebase.
+- This workshop was created as part of the [DevNexus 2024](https://devnexus.com/) conference.
+
+## Support
+
+For support, please open an issue in the GitHub repository or contact the maintainers directly.
 
 
-## Running the tests
 
-Because you started Liberty in dev mode, you can run the provided tests by pressing the `enter/return` key from the command-line session where you started dev mode.
-
-If the tests pass, you see a similar output to the following example:
-
-```
-[INFO] -------------------------------------------------------
-[INFO]  T E S T S
-[INFO] -------------------------------------------------------
-[INFO] Running it.dev.langchan4j.example.ChatServiceIT
-[INFO] ...
-[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.439 s...
-[INFO] ...
-[INFO] Running it.dev.langchan4j.example.ModelResourceIT
-[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.733 s...
-[INFO] 
-[INFO] Results:
-[INFO] 
-[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0
-```
-
-When you are done checking out the service, exit dev mode by pressing `Ctrl+C` in the command-line session where you ran Liberty, or by typing `q` and then pressing the `enter/return` key.
