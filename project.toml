@@ -1,0 +1,13 @@
+[[build.env]]
+    name = "BP_JAVA_APP_SERVER"
+    value = "liberty"
+
+[[build.env]]
+    name = "BP_MAVEN_BUILT_ARTIFACT"
+    value ="target/*.[ejw]ar src/main/liberty/config/*"
+
+[[build.buildpacks]]
+  uri = "docker://gcr.io/paketo-buildpacks/eclipse-openj9"
+
+[[build.buildpacks]]
+  uri = "docker://gcr.io/paketo-buildpacks/java"
