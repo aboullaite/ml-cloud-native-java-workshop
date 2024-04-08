@@ -21,4 +21,4 @@ spec:
         - containerPort: 9080
         env:
         - name: HUGGING_FACE_API_KEY
-          value: "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"
+          value: "INSERT_API_KEY
