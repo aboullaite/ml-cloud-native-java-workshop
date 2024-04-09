@@ -49,5 +49,5 @@ Use the Cloud Shell Web Preview to open the app
 Exit port-forward by pressing `Ctrl+C`
 
 ```
-kubectl delete -f k8s/basic/deployment.yaml
+kubectl delete -f k8s/secure/deployment.yaml
 ```
