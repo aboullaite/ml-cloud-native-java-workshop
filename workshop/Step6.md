@@ -1,49 +1,50 @@
-# Production Ready application on Kubernetes
+# Deploying the app to cloud run
 
-## Startup Boost
+### Build Docker image with Dockerfile
+Follow steps in [Step 3](Step3.md) to build the Docker image, tag and push the image to Google Container Registry
 
-## Load Balancer
+### Creating a secret using Google Secret manager
 
-```
-kubectl create secret generic huggingfacekey --from-literal=HUGGING_FACE_API_KEY=INSERT_YOUR_KEY
-```
-
-Check the secret has been created
-
-```
-kubectl get secret huggingfacekey -o yaml
+Create a secret with the Hugging Face API key
+```shell
+export REGION=us-east1
+export PROJECT_NUMBER=$(gcloud projects describe $PROJECT_ID --format="value(projectNumber)")
+printf "YOUR HUGGIN FACE API KEY " | gcloud secrets create huggingface-api --data-file=- --replication-policy=user-managed --locations=$REGION
 ```
 
-Note that the value of the secret has been Base64 encoded
-
-Edit the file `k8s/secure/deployment.yaml`:
-
-- Change the value of `PROJECT_ID` to match your project ID
-
-Run the command below to deploy the app
-
+Grant the default service account access to secrets
 ```
-kubectl apply -f k8s/secure/deployment.yaml
+gcloud projects add-iam-policy-binding \
+     $PROJECT_ID  \
+     --member=serviceAccount:$PROJECT_NUMBER-compute@developer.gserviceaccount.com \
+     --role roles/secretmanager.secretAccessor
 ```
 
-Wait for the Pod to get to the `READY` state
+### Deploy Docker images to Cloud Run
+
+Check existing deployed Cloud Run Services
+;
+```shell
+export PROJECT_ID=$(gcloud config get-value project)
+
+gcloud run services list
+```
+Deploy the application image to Cloud Run
 
 ```
-kubectl get pods -w
+# note the URL of the deployed service
+gcloud run deploy devnexus-workshop-app \
+     --image $REGION-docker.pkg.dev/$PROJECT_ID/devnexus/devnexus-workshop-app \
+     --region $REGION \
+     --port 9080 \
+     --memory 2Gi --allow-unauthenticated \
+     --update-secrets=HUGGING_FACE_API_KEY=huggingface-api:latest
 ```
-
-Access the application. You will need to copy the name of the pod form the previous step
-
-```
-kubectl port-forward pod/POD_NAME 9080:9080
-```
-
-Use the Cloud Shell Web Preview to open the app
-
-## Clean up
-
-Exit port-forward by pressing `Ctrl+C`
+Test the application in Cloud Run
 
 ```
-kubectl delete -f k8s/basic/deployment.yaml
+# find the app URL if you have not noted it
+gcloud run services list | grep devnexus-app
+✔  quotes                    us-east1   https://devnexus-...-uc.a.run.app       
 ```
+Open the URL in a browser and test the application
