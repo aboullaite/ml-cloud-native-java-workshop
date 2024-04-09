@@ -18,7 +18,7 @@ Use the Web Preview in the Cloud Shell to Open the App
 
 ## Using Buildpacks 
 
-Follow these instructions to install the pack CLI locallaly:
+Follow these instructions to install the pack CLI locally:
 
 [Pack CLI Installation Instructions](https://buildpacks.io/docs/for-platform-operators/how-to/integrate-ci/pack/)
 
@@ -34,7 +34,7 @@ Set the default builder
 pack config default-builder paketobuildpacks/builder-jammy-base
 ```
 
-Check out the project.toml file in the route dir. It should contain the following config:
+Check out the project.toml file in the root dir. It should contain the following config:
 
 ```
 [[build.env]]
@@ -52,7 +52,7 @@ Check out the project.toml file in the route dir. It should contain the followin
   uri = "docker://gcr.io/paketo-buildpacks/java"
 ```
 
-Now build you OCI image
+Now build your OCI image
 
 ```
 pack build devnexus-workshop-app
