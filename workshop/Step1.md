@@ -42,6 +42,7 @@ Open a Terminal Window and run the following commands
 gcloud services enable artifactregistry.googleapis.com
 gcloud services enable container.googleapis.com
 gcloud services enable run.googleapis.com
+gcloud services enable secretmanager.googleapis.com
 ```
 
 The rest of the steps will be executed from this environment unless instructed otherwise.
