@@ -18,7 +18,11 @@ Use the Web Preview in the Cloud Shell to Open the App
 
 ## Using Buildpacks 
 
-Install the latest version of buildpacks
+Follow these instructions to install the pack CLI locallaly:
+
+[Pack CLI Installation Instructions](https://buildpacks.io/docs/for-platform-operators/how-to/integrate-ci/pack/)
+
+Install the latest version of buildpacks in the Cloud CLI
 
 ```
 (curl -sSL "https://github.com/buildpacks/pack/releases/download/v0.33.0-rc1/pack-v0.33.0-rc1-linux.tgz" | sudo tar -C /usr/local/bin/ --no-same-owner -xzv pack)
