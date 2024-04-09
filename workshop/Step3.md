@@ -16,12 +16,42 @@ docker run -p 9080:9080 -e HUGGING_FACE_API_KEY=$HUGGING_FACE_API_KEY devnexus-w
 
 Use the Web Preview in the Cloud Shell to Open the App
 
-## Using Buildpacks (TODO Jamie)
+## Using Buildpacks 
 
-Install the last version of buildpacks
+Install the latest version of buildpacks
 
 ```
 (curl -sSL "https://github.com/buildpacks/pack/releases/download/v0.33.0-rc1/pack-v0.33.0-rc1-linux.tgz" | sudo tar -C /usr/local/bin/ --no-same-owner -xzv pack)
+```
+
+Set the default builder
+
+```
+pack config default-builder paketobuildpacks/builder-jammy-base
+```
+
+Check out the project.toml file in the route dir. It should contain the following config:
+
+```
+[[build.env]]
+    name = "BP_JAVA_APP_SERVER"
+    value = "liberty"
+
+[[build.env]]
+    name = "BP_MAVEN_BUILT_ARTIFACT"
+    value ="target/*.[ejw]ar src/main/liberty/config/*"
+
+[[build.buildpacks]]
+  uri = "docker://gcr.io/paketo-buildpacks/eclipse-openj9"
+
+[[build.buildpacks]]
+  uri = "docker://gcr.io/paketo-buildpacks/java"
+```
+
+Now build you OCI image
+
+```
+pack build devnexus-workshop-app
 ```
 
 ## IMPORTANT: Push the container image to Artifact Registry
