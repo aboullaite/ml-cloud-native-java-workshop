@@ -1,6 +1,6 @@
 # The Software Supply Chain 
 
-We are going to use Sonatype Lifecycle to scan the SBOM we created earlier. For your convience a copy of this SBOM is provided in the route of this repo
+We are going to use Sonatype Lifecycle to scan the SBOM we created earlier. For your convience a copy of this SBOM is provided in the root of this repo.
 
 Access the Lifecycle instance with the following URL:
 ```
