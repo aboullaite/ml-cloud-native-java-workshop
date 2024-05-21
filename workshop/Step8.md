@@ -11,7 +11,7 @@ We added a new `chat-gemini` in `ModelResource` class that uses Gemini. The impo
 
 ```java
  ChatLanguageModel model = VertexAiGeminiChatModel.builder()
-    .project("mohamed-playground")
+    .project("PUT_YOUR_PROJECT_HERE")
     .project(System.getenv("PROJECT_ID"))
     .location(System.getenv("LOCATION"))
     .build();
