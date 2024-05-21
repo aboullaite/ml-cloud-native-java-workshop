@@ -33,8 +33,8 @@ Deploy the application image to Cloud Run
 
 ```
 # note the URL of the deployed service
-gcloud run deploy devnexus-workshop-app \
-     --image $REGION-docker.pkg.dev/$PROJECT_ID/devnexus/devnexus-workshop-app \
+gcloud run deploy ml-java-workshopp-app \
+     --image $REGION-docker.pkg.dev/$PROJECT_ID/ml-java-workshopp/ml-java-workshopp-app \
      --region $REGION \
      --port 9080 \
      --memory 2Gi --allow-unauthenticated \
