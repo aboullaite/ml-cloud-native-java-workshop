@@ -13,12 +13,12 @@ This example demonstrates LangChain4J in a Jakarta EE / MicroProfile application
 Clone this [Repo](https://github.com/aboullaite/devnexus-workshop) 
 
 ```
-git clone https://github.com/aboullaite/devnexus-workshop.git
+git clone https://github.com/aboullaite/ml-cloud-native-java-workshop.git
 
-cd devnexus-workshop
+cd ml-cloud-native-java-workshop
 ```
 
-Click on `Open Folder` on the Explorer window on navigate to `/home/YOUR_USERNAME/devnexus-workshop`
+Click on `Open Folder` on the Explorer window on navigate to `/home/YOUR_USERNAME/ml-cloud-native-java-workshop`
 
 ![alt text](images/local-dev-step1.png)
 
