@@ -8,7 +8,7 @@ export ZONE=us-east1-b
 
 gcloud container --project $PROJECT_ID clusters create ml-java-workshopp \
     --enable-kubernetes-alpha \
-    --cluster-version "1.29.3-gke.1093000"\
+    --cluster-version "1.29.3"\
     --machine-type "e2-medium" \
     --disk-type "pd-standard" \
     --disk-size "50" \
