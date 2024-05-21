@@ -2,7 +2,7 @@
 
 ## Create Google Cloud Account
 
-1 - Open [Lab Environment](https://trygcp.dev/e/devnexus24) and Sign-In
+1 - Open [Lab Environment](https://trygcp.dev/e/voxxed-brussels) and Sign-In
 
 ![alt text](images/gcp-setup-step1.jpg)
 
