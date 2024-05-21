@@ -2,13 +2,19 @@
 
 In this step, we are going to work on generating, and analyzing our application / container image [sbom and how it helps in securing our software suuply chain](https://en.wikipedia.org/wiki/Software_supply_chain).
 
+Follow the instructions below to install  Docker scout
+```
+curl -fsSL https://raw.githubusercontent.com/docker/scout-cli/main/install.sh -o install-scout.sh
+sh install-scout.sh
+
+```
 Docker added support recently to generte sbom files. Execute the following command to do so
 ```
-docker sbom us-east1-docker.pkg.dev/$PROJECT_ID/ml-java-workshopp/ml-java-workshopp-app
+docker scout sbom us-east1-docker.pkg.dev/$PROJECT_ID/ml-java-workshopp/ml-java-workshopp-app
 ```
 While the default output is in human-readable form for quick review, the command supports a growing set of output formats that can be used more directly for integration into other systems and tools that can analyze SBOMs:
 ```
-Usage:  docker sbom [OPTIONS] COMMAND
+Usage:  docker scout sbom [OPTIONS] COMMAND
 
 Examples:
 
@@ -33,7 +39,7 @@ Options:
 ```
 To demonstrate this flow, let’s look at a simple use case where ‘docker sbom’ is used to produce its data as SPDX JSON, which is then consumed by another tool. We’ll use [Grype, Anchore’s open source vulnerability scanner](https://github.com/anchore/grype), to produce a vulnerability report without needing to contact any remote scanning services:
 ```
-docker sbom --format spdx-json us-east1-docker.pkg.dev/$PROJECT_ID/ml-java-workshopp/ml-java-workshopp-app | grype
+docker scout sbom --format spdx-json us-east1-docker.pkg.dev/$PROJECT_ID/ml-java-workshopp/ml-java-workshopp-app | grype
 ```
 
 What actions should we take based on the output ?
