@@ -6,7 +6,7 @@
 export PROJECT_ID=$(gcloud config get-value project)
 export ZONE=us-east1-b
 
-gcloud container --project $PROJECT_ID clusters create devnexus-workshop \
+gcloud container --project $PROJECT_ID clusters create ml-java-workshopp \
     --enable-kubernetes-alpha \
     --cluster-version "1.29.3-gke.1093000"\
     --machine-type "e2-medium" \
