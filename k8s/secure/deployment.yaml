@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: jakartaee-microprofile
-        image: us-east1-docker.pkg.dev/nice-ocean-419714/devnexus/devnexus-workshop-app
+        image: us-east1-docker.pkg.dev/nice-ocean-419714/ml-java-workshopp/ml-java-workshopp-app
         resources:
           requests:
             memory: "256Mi"
