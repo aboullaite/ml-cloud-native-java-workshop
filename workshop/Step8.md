@@ -7,6 +7,11 @@ In your termed session, switch to the `gemini` branch
 ```shell
 git checkout gemini
 ```
+WE should enable vertex-ai api in google cloud using:
+```
+gcloud services enable aiplatform.googleapis.com
+```
+
 We added a new `chat-gemini` in `ModelResource` class that uses Gemini. The important additional pieces are below
 
 ```java
