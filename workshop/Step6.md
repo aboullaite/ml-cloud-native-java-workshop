@@ -22,7 +22,7 @@ Note that the value of the secret has been Base64 encoded
 
 Edit the file `k8s/secure/deployment.yaml`:
 
-- Change the value of `image` (from `nice-ocean-419714`) to match your project ID (run `gcloud config list` in the cloud shell to get your project ID)
+- Change the value of `PROJECT_ID` to match your project ID (run `gcloud config list` in the cloud shell to get your projectid value)
 
 Run the command below to deploy the app
 
