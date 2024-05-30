@@ -58,12 +58,6 @@ Now build your OCI image
 pack build devnexus-workshop-app
 ```
 
-We can use buildpacks to generate a Software Bill of Materials (SBOM) using the following command
-
-```
-pack sbom ml-java-workshopp-app
-```
-
 ## IMPORTANT: Push the container image to Artifact Registry
 
 ```
