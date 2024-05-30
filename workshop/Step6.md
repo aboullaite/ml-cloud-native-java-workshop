@@ -2,7 +2,7 @@
 
 ## Create a Kubernetes Secret that containes the HuggingFace API key
 
-In the previous step we hard-coded the HuggingFace API key in the deploy,ment manifest as an environment variable. This is not a good practice as these kind of secrets might end up on Github.
+In the previous step we hard-coded the HuggingFace API key in the deployment manifest as an environment variable. This is not a good practice as these kind of secrets might end up on Github.
 
 Kubernetes has a mechanism to secure Secrets (passwords, API Keys...). Let's explore how to use it.
 
