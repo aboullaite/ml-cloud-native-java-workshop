@@ -24,7 +24,7 @@ gcloud container --project $PROJECT_ID clusters create ml-java-workshopp \
 Edit the file `k8s/basic/deployment.yaml`:
 
 - Change the value of the `HUGGING_FACE_API_KEY` environment variable
-- Change the value of `PROJECT_ID` to match your project ID
+- Change the value of `PROJECT_ID` to match your project ID (run `gcloud config list` in the cloud shell to get your projectid value)
 
 Run the command below to deploy the app
 
