@@ -37,9 +37,16 @@ Options:
   -v, --version               version for sbom
 
 ```
-To demonstrate this flow, let’s look at a simple use case where ‘docker sbom’ is used to produce its data as SPDX JSON, which is then consumed by another tool. We’ll use Grype, Anchore’s open source vulnerability scanner, (Follow this [link](https://github.com/anchore/grype) to install it) to produce a vulnerability report without needing to contact any remote scanning services:
+To demonstrate this flow, let’s look at a simple use case where ‘docker sbom’ is used to produce its data as SPDX JSON, which is then consumed by another tool. We’ll use Grype, Anchore’s open source vulnerability scanner, to produce a vulnerability report without needing to contact any remote scanning services:
+
+Install grype
 ```
-docker scout sbom --format spdx us-east1-docker.pkg.dev/$PROJECT_ID/ml-java-workshopp/ml-java-workshopp-app | grype
+curl -sSfL https://raw.githubusercontent.com/anchore/grype/main/install.sh | sh -s -- -b .
+```
+
+Run Scout and pass the result to grype
+```
+docker scout sbom --format spdx us-east1-docker.pkg.dev/$PROJECT_ID/ml-java-workshopp/ml-java-workshopp-app | ./grype
 ```
 
 What actions should we take based on the output ?

@@ -2,7 +2,7 @@
 
 ## Create a Kubernetes Secret that containes the HuggingFace API key
 
-In the previous step we hard-coded the HuggingFace API key in the deploy,ment manifest as an environment variable. This is not a good practice as these kind of secrets might end up on Github.
+In the previous step we hard-coded the HuggingFace API key in the deployment manifest as an environment variable. This is not a good practice as these kind of secrets might end up on Github.
 
 Kubernetes has a mechanism to secure Secrets (passwords, API Keys...). Let's explore how to use it.
 
@@ -22,7 +22,7 @@ Note that the value of the secret has been Base64 encoded
 
 Edit the file `k8s/secure/deployment.yaml`:
 
-- Change the value of `PROJECT_ID` to match your project ID
+- Change the value of `PROJECT_ID` to match your project ID (run `gcloud config list` in the cloud shell to get your projectid value)
 
 Run the command below to deploy the app
 

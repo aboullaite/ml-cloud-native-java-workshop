@@ -44,7 +44,7 @@ Test the application in Cloud Run
 
 ```
 # find the app URL if you have not noted it
-gcloud run services list | grep devnexus-app
-✔  quotes                    us-east1   https://devnexus-...-uc.a.run.app       
+gcloud run services list | grep ml-java-workshopp-app
+✔  quotes                    us-east1   https://ml-java-workshopp-app-...-uc.a.run.app       
 ```
 Open the URL in a browser and test the application
